@@ -198,3 +198,11 @@ import {checkAdmin,webUrl} from '../../../static/js/public.js'
 
 
 </style>
+
+<style lang="scss" scoped>
+@media (max-width: 420px) {//mobile
+  .edit_wrap{
+  width: 80%;
+  }
+}
+</style>
