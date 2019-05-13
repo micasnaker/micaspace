@@ -192,3 +192,13 @@ export default {
   }
 }
 </style>
+
+
+<style lang="scss" scoped>
+@media (max-width: 420px) {
+  //mobile
+  .wrapper:last-child {
+    padding-bottom: 35%;
+  }
+}
+</style>

@@ -1,104 +1,169 @@
 <template>
   <div class="page" id="page" @click="clickTips">
-      <div class="wrapper">
-        <el-row>
-            <el-col :xs="24" :sm="4" :md="18" :lg="18" :xl="18">
-              <div class="main">
-                <p class="title">About</p>
-                <!-- <list_article :items="items" type="archives"></list_article> -->
-                <div class="card">
-                  <p class="card-title" id="anchor-about">关于我</p>
-                  <p class="txt">做前端有一年了，目前就职于<a href="http://111.231.112.75/resume/" target="_blank">土木金华</a></p>
-                  <p class="txt">并不是科班出身，学的是电子，不想从事不喜欢的工作，直到遇到前端</p>
-                  <p class="txt">非常喜欢,开始自学,遇到过很多坑,但是一直坚持,坚信终有一天自己也会变强!</p>
-                </div>
-                <div class="card">
-                  <p class="card-title" id="anchor-contact">联系我</p>
-                  <ul>
-                    <li>个人主页：<a href="https://www.yangyuetao.cn" target="_blank">Mica</a></li>
-                    <li>Github：<a href="https://github.com/micasnaker" target="_blank">micasnaker</a></li>
-                    <li><a href="https://www.zhihu.com/people/mi-qia-bu-shi-fan-qia/activities" target="_blank">知乎</a></li>
-                    <li><a href="https://music.163.com/#/user/home?id=272667179" target="_blank">网易云</a></li>
-                    <li>Email： <a href="mailto:342060286@qq.com">micasnaker@gmail.com</a></li>
-                    <li>QQ：1186919723</li>
-                  </ul>
-                </div>
-                <div class="card">
-                  <p class="card-title" id="anchor-us">关于本站</p>
-                  <p class="txt">这个博客主要用于记录一个菜鸟程序猿的Growth之路.</p>
-                  <p class="txt">这也是自己第一次做博客，希望和大家多多交流，一起成长！</p>
-                  <p class="txt">欢迎大家提一些对本站的建议，可以直接在下面留言或者新建一个<a href="https://github.com/bestRenekton/taoLand/issues" target="_blank">Issue.</a></p>
-                  <ul>
-                    <li>实现了用户注册、登录、检测登录、博客管理（文章的修改和删除）、文章编辑（Markdown）、标签分类等功能。</li>
-                    <li>前端使用vue全家桶（cli,router,vuex,axios），框架用的elmentUI</li>
-                    <li>后端使用node,框架用的express,mongoose</li>
-                    <li>数据库采用mongodb</li>
-                    <li>服务器是centos的</li>
-                  </ul>
-                  <div class="update">
-                    <h3 id="update-log">Update Log</h3>
-                    <p><em>2018.2.28 v1.0.1</em></p>
+    <div class="wrapper">
+      <el-row>
+        <el-col :xs="24" :sm="4" :md="18" :lg="18" :xl="18">
+          <div class="main">
+            <p class="title">About</p>
+            <!-- <list_article :items="items" type="archives"></list_article> -->
+            <div class="card">
+              <p class="card-title" id="anchor-about">关于我</p>
+              <!-- <p class="txt">
+                做前端有一年了，目前就职于
+                <a href="http://111.231.112.75/resume/" target="_blank">Civil Jinhua</a>
+              </p> -->
+              <!-- <p class="txt">并不是科班出身，学的是电子，不想从事不喜欢的工作，直到遇到前端</p> -->
+              <p class="txt">`喜欢一切数码&&科技产品并且偶尔拍摄Vlog的一名Web developer`</p>
+              <p class="txt">非常喜欢现在的工作和职业,从大学期间开始自学,遇到过很多坑,但是一直坚持,坚信终有一天自己也会变强!</p>
+            </div>
+            <div class="card">
+              <p class="card-title" id="anchor-contact">联系我</p>
+              <ul>
+                <li>
+                  个人主页：
+                  <a href="http://111.231.112.75" target="_blank">Mica</a>
+                </li>
+                <li>
+                  Github：
+                  <a href="https://github.com/micasnaker" target="_blank">micasnaker</a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.zhihu.com/people/mi-qia-bu-shi-fan-qia/activities"
+                    target="_blank"
+                  >知乎</a>
+                </li>
+                <li>
+                  <a href="https://music.163.com/#/my/m/music/playlist?id=409256318" target="_blank">网易云</a>
+                </li>
+                <li>
+                  Email：
+                  <a href="mailto:1186919723@qq.com">micasnaker@gmail.com</a>
+                </li>
+                <li>QQ：1186919723</li>
+              </ul>
+            </div>
+            <div class="card">
+              <p class="card-title" id="anchor-us">关于本站</p>
+              <p class="txt">这个博客主要用于记录一个菜鸟程序猿的Growth之路.</p>
+              <p class="txt">这也是自己第一次做博客，希望和大家多多交流，一起成长！</p>
+              <!-- <p class="txt">
+                欢迎大家提一些对本站的建议，可以直接在下面留言或者新建一个
+                <a href="https://github.com/bestRenekton/taoLand/issues" target="_blank">Issue.</a>
+              </p> -->
+              <ul>
+                <li>实现了用户注册、登录、检测登录、博客管理（文章的修改和删除）、文章编辑（Markdown）、标签分类等功能。</li>
+                <li>前端使用vue全家桶（cli,router,vuex,axios），框架用的elmentUI</li>
+                <li>后端使用node,框架用的express,mongoose</li>
+                <li>数据库采用mongodb</li>
+                <li>服务器是windows server 2012的</li>
+              </ul>
+              <div class="update">
+                <h3 id="update-log">Update Log</h3>
+                <p>
+                  <em>2019.2.28 v1.0.1</em>
+                </p>
+                <ul>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code> 个人博客第一版上线
+                  </li>
+                </ul>
+                <p>
+                  <em>2019.3.20 v1.1.1</em>
+                </p>
+                <ul>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>新增流量统计功能
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>新增token功能
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>升到https
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>若干bug
+                  </li>
+                </ul>
+                <p>
+                  <em>2019.4.10 v1.2.1</em>
+                </p>
+                <ul>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>大幅提高首页渲染速度
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>看板娘上线
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>若干优化
+                  </li>
+                </ul>
+                <p>
+                  <em>2018.4.23 v1.3.1</em>
+                </p>
+                <ul>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>游客登陆/注册/检测
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>图片上传
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>评论留言
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>文章分享功能
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>上一篇下一篇
+                  </li>
+                </ul>
+                <p><em>2019.5.13 v1.3.1</em></p>
                     <ul>
-                      <li><code class="highlighter-rouge">[+]</code> 个人博客第一版上线</li>
-                    </ul>
-                    <p><em>2018.3.20 v1.1.1</em></p>
-                    <ul>
-                      <li><code class="highlighter-rouge">[+]</code>新增流量统计功能</li>
-                      <li><code class="highlighter-rouge">[+]</code>新增token功能</li>
-                      <li><code class="highlighter-rouge">[+]</code>升到https</li>
-                      <li><code class="highlighter-rouge">[+]</code>若干bug</li>
-                    </ul>
-                    <p><em>2018.6.10 v1.2.1</em></p>
-                    <ul>
-                      <li><code class="highlighter-rouge">[+]</code>大幅提高首页渲染速度</li>
-                      <li><code class="highlighter-rouge">[+]</code>看板娘上线</li>
-                      <li><code class="highlighter-rouge">[+]</code>若干优化</li>
-                    </ul>
-                    <p><em>2018.7.23 v1.3.1</em></p>
-                    <ul>
-                      <li><code class="highlighter-rouge">[+]</code>游客登陆/注册/检测</li>
-                      <li><code class="highlighter-rouge">[+]</code>图片上传</li>
-                      <li><code class="highlighter-rouge">[+]</code>评论留言</li>
-                      <li><code class="highlighter-rouge">[+]</code>文章分享功能</li>
-                      <li><code class="highlighter-rouge">[+]</code>上一篇下一篇</li>
-                    </ul>
-                    <!-- <p><em>2018.7.23 v1.3.1</em></p>
-                    <ul>
-                      <li><code class="highlighter-rouge">[+]</code>music</li>
-                      <li><code class="highlighter-rouge">[+]</code>文章配图</li>
+                      <!-- <li><code class="highlighter-rouge">[+]</code>music</li>
+                      <li><code class="highlighter-rouge">[+]</code>文章配图</li> -->
                       <li><code class="highlighter-rouge">[+]</code>分页功能</li>
-                      <li><code class="highlighter-rouge">[+]</code>后台消息功能</li>
-                      <li><code class="highlighter-rouge">[+]</code>redis</li>
-                    </ul> -->
-                  </div>
-                </div>
-                <div class="card">
-                  <p class="card-title" id="anchor-friend">友情链接</p>
-                  <div class="row-link">
-                    <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>|
-                    <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>|
-                    <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>|
-                    <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-                  </div>
-                </div>
+                      <!-- <li><code class="highlighter-rouge">[+]</code>后台消息功能</li>
+                      <li><code class="highlighter-rouge">[+]</code>redis</li> -->
+                </ul>
               </div>
-            </el-col>
-            <el-col :xs="0" :sm="4" :md="6" :lg="6" :xl="6">
-              <div class="aside">
-                <p class="title">Content</p>
-                <!-- <list_content :items="items"></list_content> -->
-                  <div class="content">
-                    <ul>
-                      <li><a href="javascript:;" class="title" @click="anchor('about')">关于我</a></li>
-                      <li><a href="javascript:;" class="title" @click="anchor('contact')">联系我</a></li>
-                      <li><a href="javascript:;" class="title" @click="anchor('us')">关于本站</a></li>
-                      <li><a href="javascript:;" class="title" @click="anchor('friend')">友情链接</a></li>
-                    </ul>
-                  </div>
+            </div>
+            <div class="card">
+              <p class="card-title" id="anchor-friend">友情链接</p>
+              <div class="row-link">
+                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>|
+                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>|
+                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>|
+                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
               </div>
-            </el-col>
-        </el-row>
-      </div>
+            </div>
+          </div>
+        </el-col>
+        <el-col :xs="0" :sm="4" :md="6" :lg="6" :xl="6">
+          <div class="aside">
+            <p class="title">Content</p>
+            <!-- <list_content :items="items"></list_content> -->
+            <div class="content">
+              <ul>
+                <li>
+                  <a href="javascript:;" class="title" @click="anchor('about')">关于我</a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="title" @click="anchor('contact')">联系我</a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="title" @click="anchor('us')">关于本站</a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="title" @click="anchor('friend')">友情链接</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -288,3 +353,19 @@ export default {
 }
 </style>
 
+<style lang="scss" scoped>
+@media (max-width: 420px) {
+  //mobile
+  .card:last-child {
+    padding-bottom: 35%;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+@media (width: 768px) {
+  .el-col-sm-4 {
+    width: 49.66667%;
+  }
+}
+</style>

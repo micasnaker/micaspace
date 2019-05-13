@@ -11,7 +11,7 @@
         </a>
       </p>
       <p>欢迎光临本站,当前总访问量{{visit}}次</p>
-      <p>Mica built with vue and node.Theme designed by YYT.</p>
+      <p>Mica built with Vue and Node.Theme designed by YYT.</p>
     </div>
     <transition name="slide-fade">
       <div v-if="isTop" class="toTop iconfont icon-top" @click="toTop"></div>
@@ -66,6 +66,7 @@ footer {
   margin-top: 20px;
   padding: 10px 0;
   text-align: center;
+  z-index: 999999;
   .wrapper .iconfont {
     color: #bbb;
     font-size: 20px;

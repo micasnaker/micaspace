@@ -40,9 +40,9 @@ import {checkAdmin,webUrl} from '../../../static/js/public.js'
         category:[],
         gist: '',
         content: '',
-        categorys:['JavaScript','ES6','jQuery','css','ajax',
-        'http','https','websocket','apache','Vue','react','react-native',
-        'android','node','mongo','CentOS','webpack',
+        categorys:['JavaScript','ES6','Promise','jQuery','html','css','media','ajax',
+        'http','https','websocket','apache','tomcat','微信小程序','chrome','Vue','Vuex','axios','react','react-native',
+        'android','php','qs','node','navicat','mongo','photoShop','nginx','CentOS','webpack','yarn',
         'NW.js','Electron','easyUI','ECharts','wx','HBuilder']
       }
     },
@@ -171,7 +171,7 @@ import {checkAdmin,webUrl} from '../../../static/js/public.js'
 
 <style scoped lang='scss'>
   .edit_wrap {
-    width: 1600px;
+    width: 92%;
     margin: 30px auto;
     background: #fff;
     padding: 40px;

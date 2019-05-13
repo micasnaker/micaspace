@@ -81,3 +81,21 @@ export default {
   }
 }
 </style>
+
+<style lang="scss" scoped>
+@media (width: 768px) {
+  .el-col-sm-4 {
+    width: 49.66667%;
+  }
+}
+</style>
+
+
+<style lang="scss" scoped>
+@media (max-width: 420px) {
+  //mobile
+  .wrapper:last-child {
+    padding-bottom: 35%;
+  }
+}
+</style>

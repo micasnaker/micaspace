@@ -3,17 +3,40 @@
     <div class="wrapper">
       <h1 class="title">{{title}}</h1>
       <div class="some">
-        <span class="date"><i class="iconfont icon-date"></i>{{date}}</span>
-        <span class="category"><i class="iconfont icon-tubiao13"></i><span v-for="tag in category" :key="tag.id">{{tag}}</span></span>
+        <span class="date">
+          <i class="iconfont icon-date"></i>
+          {{date}}
+        </span>
+        <span class="category">
+          <i class="iconfont icon-tubiao13"></i>
+          <span v-for="tag in category" :key="tag.id">{{tag}}</span>
+        </span>
       </div>
       <div class="detail" v-if="content">
-          <mavon-editor v-model="content" default_open="preview" defaultOpen= "preview"  :toolbarsFlag="false" :subfield="false"></mavon-editor>
-          <div class="footer">
-            <div @click="toGo(prev._id)" class="btn prev"><p>←上一篇</p><p>{{prev.title?prev.title:'没有更多'}}</p></div>
-            <div @click="toGo(next._id)" class="btn next"><p>下一篇→</p><p>{{next.title?next.title:'没有更多'}}</p></div>
+        <mavon-editor
+          v-model="content"
+          default_open="preview"
+          defaultOpen="preview"
+          :toolbarsFlag="false"
+          :subfield="false"
+        ></mavon-editor>
+        <div class="footer">
+          <div @click="toGo(prev._id)" class="btn prev">
+            <p>←上一篇</p>
+            <p>{{prev.title?prev.title:'没有更多'}}</p>
           </div>
+          <div @click="toGo(next._id)" class="btn next">
+            <p>下一篇→</p>
+            <p>{{next.title?next.title:'没有更多'}}</p>
+          </div>
+        </div>
       </div>
-      <comment :comments="comments" :articleId="articleId" @update="update" @setTextarea="setTextarea"></comment>
+      <comment
+        :comments="comments"
+        :articleId="articleId"
+        @update="update"
+        @setTextarea="setTextarea"
+      ></comment>
     </div>
   </div>
 </template>
@@ -98,9 +121,7 @@ export default {
       // ]
     };
   },
-  beforeCreate() {
-
-  },
+  beforeCreate() {},
   mounted: function() {
     this.init();
   },
@@ -280,6 +301,16 @@ export default {
         margin: 0 20px 0 0;
       }
     }
+  }
+}
+</style>
+
+
+  <style lang="scss" scoped>
+@media (max-width: 420px) {
+  //mobile
+  .wrapper {
+    padding-bottom: 35%;
   }
 }
 </style>

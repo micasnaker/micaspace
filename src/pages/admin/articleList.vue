@@ -243,7 +243,7 @@ export default {
 </style>
 <style lang="scss" scoped>
 #content {
-  width: 1300px;
+  width: 86%;
   margin: 0 auto;
   > .title {
     margin: 30px 0;
@@ -267,10 +267,34 @@ export default {
     .el-button + .el-button {
       margin-left: 0;
     }
-    .toHome{
+    .toHome {
       display: block;
       margin-top: 5px;
+      width: 60px;
     }
   }
 }
 </style>
+
+<style lang="scss" scoped>
+@media (width: 768px) {
+  //ipad
+  #content {
+    .el-button + .el-button {
+      margin-left: 0;
+    }
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+@media (width: 1024px) {
+  //ipad pro
+  #content {
+    .el-button + .el-button {
+      margin-left: 0;
+    }
+  }
+}
+</style>
+

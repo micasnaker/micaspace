@@ -1,116 +1,229 @@
 <template>
   <div class="page">
-      <div class="wrapper">
-        <el-row>
-            <el-col :xs="24" :sm="4" :md="18" :lg="18" :xl="18">
-              <div class="main">
-                <list_home :items="items"></list_home>
-              </div>
-            </el-col>
-            <el-col :xs="0" :sm="4" :md="6" :lg="6" :xl="6">
-              <div class="aside">
-                <div class="card">
-                  <p class="title">ABOUT ME</p>
-                  <img class="pic" src="../../static/img/dage_mica.jpg" alt="">
-                  <div class="row">
-                    <p>A Web developer</p>
-                    <div class="icons">
-                      <a href="https://github.com/micasnaker" target="_blank"><i class="iconfont icon-github"></i></a>
-                      <a href="https://www.zhihu.com/people/mi-qia-bu-shi-fan-qia/activities" target="_blank"><i class="iconfont icon-zhihu"></i></a>
-                      <a href="https://music.163.com/#/user/home?id=272667179" target="_blank"><i class="iconfont icon-yinle"></i></a>
-                      <a href="https://weibo.com/u/6615895315/home?wvr=5&lf=reg" target="_blank"><i class="iconfont icon-weibo"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <p class="title">FRIENDS</p>
-                  <div class="row">
-                    <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-                    <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-                    <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-                    <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-                    <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-                  </div>
-                </div>
-              </div>
-            </el-col>
-        </el-row>
+    <loading v-if="isTop"></loading>
+    <div class="aside_wrap">
+      <div class="card">
+        <p class="title">ABOUT ME</p>
+        <img class="pic" src="../../static/img/dage_mica.jpg" alt>
+        <div class="row">
+          <p>A Web developer</p>
+          <div class="icons">
+            <a href="https://github.com/micasnaker" target="_blank">
+              <i class="iconfont icon-github"></i>
+            </a>
+            <a href="https://www.zhihu.com/people/mi-qia-bu-shi-fan-qia/activities" target="_blank">
+              <i class="iconfont icon-zhihu"></i>
+            </a>
+            <a href="https://music.163.com/#/my/m/music/playlist?id=409256318" target="_blank">
+              <i class="iconfont icon-yinle"></i>
+            </a>
+            <a href="https://weibo.com/u/6615895315/home?wvr=5&lf=reg" target="_blank">
+              <i class="iconfont icon-weibo"></i>
+            </a>
+          </div>
+        </div>
       </div>
+      <div class="card">
+        <p class="title">FRIENDS</p>
+        <div class="row">
+          <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+          <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+          <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+          <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+          <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+        </div>
+      </div>
+    </div>
+    <div class="changePage">
+      <el-pagination
+        v-show="items.length>0"
+        background
+        layout="prev, pager, next"
+        :total="items.length"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-size="pageSize"
+      >></el-pagination>
+    </div>
+    <div class="wrapper">
+      <el-row>
+        <el-col :xs="24" :sm="4" :md="18" :lg="18" :xl="18">
+          <div class="main">
+            <list_home :items="items" :currentPage="currentPage"></list_home>
+          </div>
+        </el-col>
+        <el-col :xs="0" :sm="4" :md="6" :lg="6" :xl="6">
+          <div class="aside">
+            <div class="card">
+              <p class="title">ABOUT ME</p>
+              <img class="pic" src="../../static/img/dage_mica.jpg" alt>
+              <div class="row">
+                <p>A Web developer</p>
+                <div class="icons">
+                  <a href="https://github.com/micasnaker" target="_blank">
+                    <i class="iconfont icon-github"></i>
+                  </a>
+                  <a
+                    href="https://www.zhihu.com/people/mi-qia-bu-shi-fan-qia/activities"
+                    target="_blank"
+                  >
+                    <i class="iconfont icon-zhihu"></i>
+                  </a>
+                  <a
+                    href="https://music.163.com/#/my/m/music/playlist?id=409256318"
+                    target="_blank"
+                  >
+                    <i class="iconfont icon-yinle"></i>
+                  </a>
+                  <a href="https://weibo.com/u/6615895315/home?wvr=5&lf=reg" target="_blank">
+                    <i class="iconfont icon-weibo"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <p class="title">FRIENDS</p>
+              <div class="row">
+                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+              </div>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+    <div class="changePage">
+      <el-pagination
+        v-show="items.length>0"
+        background
+        layout="prev, pager, next"
+        :total="items.length"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-size="pageSize"
+      >></el-pagination>
+    </div>
   </div>
 </template>
 
 <script>
-import List_home from "../components/list_home"
-import {webUrl} from "../../static/js/public.js"
+import List_home from "../components/list_home";
+import { webUrl } from "../../static/js/public.js";
+import loading from "../components/loading";
+import { setTimeout } from "timers";
 export default {
-  data(){
-    return{
-      items:[]
-    }
+  data() {
+    return {
+      items: [],
+      currentPage: 1,
+      pageSize: 10,
+      // total:10
+      isTop: true,
+    };
   },
-  components:{
+  components: {
     List_home,
+    loading,
   },
-  created(){
-    this.$axios.post(webUrl+'articleList')
-      .then((res)=>{
-        this.items=res.data.reverse();
-      })
+  created() {
+    this.$axios.post(webUrl + "articleList").then(res => {
+      this.items = res.data.reverse();
+    });
+
+    window.addEventListener("scroll", this.scroll);
+  },
+
+  methods: {
+    handleCurrentChange(val) {
+      this.currentPage = val;
+    },
+
+    scroll: function() {
+      let scroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      if (scroll < 100) {
+        this.isTop = true;
+      } else {
+        this.isTop = false;
+      }
+    },
+    toTop: function() {
+      //Math.animation = function (from, to, duration, easing, callback) {}
+      Math.animation(
+        document.documentElement.scrollTop,
+        0,
+        800,
+        "Quart.easeOut",
+        function(value) {
+          document.documentElement.scrollTop = value;
+          document.body.scrollTop = value;
+        }
+      );
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-.main{
+.changePage {
+  // padding-right: 15%;
+  .el-pagination {
+    text-align: center;
+    // display: inline;
+  }
+}
+.main {
   background: #f8f8fd;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 30px rgba(10, 10, 0, 0.1) inset;
-  margin:0 10px;
+  margin: 0 10px;
   padding: 10px;
 }
-.aside{
+.aside {
   background: #f8f8fd;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 30px rgba(10, 10, 0, 0.1) inset;
-  .card{
+  .card {
     border-top: 1px solid #eee;
-    .title{
+    .title {
       padding: 10px;
       font-weight: 600;
-      color:#808080;
+      color: #808080;
       margin-bottom: 10px;
     }
-    .pic{
+    .pic {
       width: 100%;
     }
-    .row{
+    .row {
       padding: 0 10px;
-      &>p{
-        color:#bfbfbf;
-        
+      & > p {
+        color: #bfbfbf;
       }
-      .icons{
-        padding:10px 0;
-        .iconfont{
-          transition: all .3s;
+      .icons {
+        padding: 10px 0;
+        .iconfont {
+          transition: all 0.3s;
           margin: 5px;
           color: #000;
           font-size: 20px;
           background-color: rgba(200, 200, 200, 0.3);
           padding: 8px;
           border-radius: 50%;
-          &:hover{            
-            color:#fff;
+          &:hover {
+            color: #fff;
             background-color: rgba(0, 133, 166, 0.8);
-            border-radius: 5px;          
+            border-radius: 5px;
           }
         }
       }
 
-      &>.link{
-        color:#bfbfbf;
+      & > .link {
+        color: #bfbfbf;
         display: inline-block;
         padding: 5px;
-        transition: all .3s;        
-        &:hover{
+        transition: all 0.3s;
+        &:hover {
           color: #0085a1;
         }
       }
@@ -118,10 +231,100 @@ export default {
   }
 }
 
-@media (min-width: 768px) {//pc
-  .main{
-    margin:0 20px;
+@media (min-width: 768px) {
+  //pc
+  .changePage {
+    text-align: center;
+    padding-right: 15%;
+    .el-pagination {
+      display: inline;
+    }
+  }
+  .aside_wrap {
+    display: none;
+  }
+  .main {
+    margin: 0 20px;
     padding: 20px;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+@media (width: 768px) {
+  .el-col-sm-4 {
+    width: 49.66667%;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+@media (max-width: 420px) {
+  //mobile
+  .wrapper {
+    padding-bottom: 20%;
+  }
+  .changePage {
+    .el-pagination {
+      // display: inline;
+      text-align: center;
+      margin-bottom: 4.5%;
+    }
+  }
+  .aside_wrap {
+    background: #f8f8fd;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(10, 10, 0, 0.1) inset;
+
+    .card {
+      border-top: 1px solid #eee;
+      .title {
+        padding: 10px;
+        font-weight: 600;
+        color: #808080;
+        margin-bottom: 10px;
+      }
+      .pic {
+        width: 100%;
+      }
+      .row {
+        padding: 0 10px;
+        & > p {
+          color: #bfbfbf;
+        }
+        .icons {
+          padding: 10px 0;
+          // text-align: center;
+          .iconfont {
+            transition: all 0.3s;
+            margin: 5px;
+            color: #000;
+            font-size: 20px;
+            background-color: rgba(200, 200, 200, 0.3);
+            padding: 8px;
+            border-radius: 50%;
+            &:hover {
+              color: #fff;
+              background-color: rgba(0, 133, 166, 0.8);
+              border-radius: 5px;
+            }
+          }
+        }
+
+        & > .link {
+          color: #bfbfbf;
+          display: inline-block;
+          padding: 5px;
+          transition: all 0.3s;
+          &:hover {
+            color: #0085a1;
+          }
+        }
+      }
+    }
+  }
+  .card:last-child {
+    margin-bottom: 5%;
   }
 }
 </style>
