@@ -220,6 +220,9 @@ header {
   //pc
   header {
     margin-bottom: 20px;
+    .el-row {
+      z-index: 999999999;
+    }
     .logo {
       line-height: 60px;
       font-size: 18px;
@@ -241,3 +244,14 @@ header {
   }
 }
 </style>
+
+<style lang="scss" scoped>
+@media (max-width: 420px) {
+  //mobile
+
+  .el-row {
+    z-index: 999999999;
+  }
+}
+</style>
+
