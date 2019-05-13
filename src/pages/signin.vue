@@ -13,7 +13,7 @@
       <el-button @click="signUp" class="sign" >Sign Up</el-button>
       <p class="toSignUp"><span @click="back" > Back to Sign In !</span></p>
     </div>
-    <div v-else-if="status==3" class="loading">
+    <div v-else-if="status==3" class="loading_signin">
       <div v-if="!txtSignIn" class="outside"></div>
       <p v-else class="txt">Sign In</p>
 		</div>
@@ -219,7 +219,7 @@ export default {
       }
     }
   }
-  .loading {
+  .loading_signin {
     width: 100px;
     height: 100px;
     position: relative;

@@ -13,8 +13,25 @@
       </el-button-group>
     </div>
     <div v-if="type=='article'">
+      <div class="changePage">
+        <el-pagination
+          v-show="articleList.length>0"
+          background
+          layout="prev, pager, next"
+          :total="articleList.length"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-size="pageSize"
+        >></el-pagination>
+      </div>
       <el-button @click="handleAdd()" class="btn-add">新增+</el-button>
-      <el-table :data="articleList" style="width: 100%" header-align="right" border stripe>
+      <el-table
+        :data="articleList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize)"
+        style="width: 100%"
+        header-align="right"
+        border
+        stripe
+      >
         <el-table-column label="标题" width="250">
           <template slot-scope="scope">
             <span>{{ scope.row.title }}</span>
@@ -104,7 +121,9 @@ export default {
     return {
       articleList: [],
       demoList: [],
-      type: "article"
+      type: "article",
+      currentPage: 1,
+      pageSize: 10
     };
   },
   beforeCreate: function() {},
@@ -123,6 +142,10 @@ export default {
     });
   },
   methods: {
+    // 分页
+    handleCurrentChange(val) {
+      this.currentPage = val;
+    },
     toHome: function() {
       this.$router.replace({ name: "home" });
     },
@@ -240,11 +263,25 @@ export default {
 .el-table .cell {
   text-align: center;
 }
+.el-table--border {
+  margin-bottom: 10%;
+}
 </style>
+
+<style scoped>
+</style>
+
 <style lang="scss" scoped>
 #content {
   width: 86%;
   margin: 0 auto;
+  .changePage {
+    // padding-right: 15%;
+    .el-pagination {
+      text-align: center;
+      // display: inline;
+    }
+  }
   > .title {
     margin: 30px 0;
     text-align: center;
