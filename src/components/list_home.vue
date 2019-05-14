@@ -1,6 +1,7 @@
 <template>
   <div class="ws">
     <div
+      @click="detail(item._id)"
       class="card"
       v-for="(item) in items.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize)"
       :key="item.id"
@@ -35,7 +36,13 @@ export default {
     };
   },
 
-  props: ["items", "currentPage"]
+  props: ["items", "currentPage"],
+  methods: {
+    detail(id) {
+      console.log(id);
+      this.$router.push({ path: "/detail/" + id });
+    }
+  }
   // methods: {
   //   handleCurrentChange(val) {
   //     this.currentPage = val;

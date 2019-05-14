@@ -4,7 +4,7 @@
     <div class="aside_wrap">
       <div class="card">
         <p class="title">ABOUT ME</p>
-        <img class="pic" src="../../static/img/dage_mica.jpg" alt>
+        <img @click="play_none" class="pic" src="../../static/img/dage_mica.jpg" alt>
         <div class="row">
           <p>A Web developer</p>
           <div class="icons">
@@ -45,6 +45,21 @@
         :page-size="pageSize"
       >></el-pagination>
     </div>
+    <div class="plays">
+      <transition name="draw">
+        <iframe
+          v-show="isPlayShow"
+          frameborder="no"
+          border="0"
+          marginwidth="0"
+          marginheight="0"
+          width="300"
+          height="86"
+          src="//music.163.com/outchain/player?type=2&id=37653063&auto=0&height=66"
+        ></iframe>
+      </transition>
+    </div>
+
     <div class="wrapper">
       <el-row>
         <el-col :xs="24" :sm="4" :md="18" :lg="18" :xl="18">
@@ -56,7 +71,7 @@
           <div class="aside">
             <div class="card">
               <p class="title">ABOUT ME</p>
-              <img class="pic" src="../../static/img/dage_mica.jpg" alt>
+              <img @click="play_none" class="pic" src="../../static/img/dage_mica.jpg" alt>
               <div class="row">
                 <p>A Web developer</p>
                 <div class="icons">
@@ -81,7 +96,7 @@
                 </div>
               </div>
             </div>
-            <div class="card">
+            <div class="card" @click="sss">
               <p class="title">FRIENDS</p>
               <div class="row">
                 <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
@@ -91,6 +106,21 @@
                 <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
               </div>
             </div>
+          </div>
+          <div class="play">
+            <transition name="draw">
+              <iframe
+                ref="player"
+                v-show="isPlayShow"
+                frameborder="no"
+                border="0"
+                marginwidth="0"
+                marginheight="0"
+                width="300"
+                height="86"
+                src="//music.163.com/outchain/player?type=2&id=37653063&auto=0&height=66"
+              ></iframe>
+            </transition>
           </div>
         </el-col>
       </el-row>
@@ -122,11 +152,12 @@ export default {
       pageSize: 10,
       // total:10
       isTop: true,
+      isPlayShow: true
     };
   },
   components: {
     List_home,
-    loading,
+    loading
   },
   created() {
     this.$axios.post(webUrl + "articleList").then(res => {
@@ -141,10 +172,18 @@ export default {
       this.currentPage = val;
     },
 
+    play_none() {
+      this.isPlayShow = !this.isPlayShow;
+    },
+
+    sss() {
+      let a = this.$refs.player.src.slice(61, -10);
+    },
+
     scroll: function() {
       let scroll =
         document.body.scrollTop || document.documentElement.scrollTop;
-      if (scroll < 100) {
+      if (scroll < 60) {
         this.isTop = true;
       } else {
         this.isTop = false;
@@ -180,6 +219,35 @@ export default {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 30px rgba(10, 10, 0, 0.1) inset;
   margin: 0 10px;
   padding: 10px;
+}
+
+.play {
+  position: fixed;
+  left: 0;
+  opacity: 0.6;
+  border: none;
+  box-shadow: 0 0 10px #ccc;
+  border-radius: 2px;
+  bottom: 145px;
+  z-index: 999999;
+}
+
+.plays {
+  position: fixed;
+  left: 0;
+  opacity: 0.6;
+  border: none;
+  box-shadow: 0 0 10px #ccc;
+  border-radius: 2px;
+  bottom: 145px;
+  z-index: 999999;
+}
+.draw-enter-active,
+.draw-leave-active {
+  transition: all 1s ease;
+}
+.draw-enter, .draw-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  width: 0;
 }
 .aside {
   background: #f8f8fd;
@@ -240,6 +308,10 @@ export default {
       display: inline;
     }
   }
+
+  .plays {
+    display: none;
+  }
   .aside_wrap {
     display: none;
   }
@@ -270,6 +342,16 @@ export default {
       text-align: center;
       margin-bottom: 4.5%;
     }
+  }
+  .plays {
+    position: fixed;
+    left: 0;
+    opacity: 0.6;
+    border: none;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 2px;
+    bottom: 145px;
+    z-index: 99999999;
   }
   .aside_wrap {
     background: #f8f8fd;
