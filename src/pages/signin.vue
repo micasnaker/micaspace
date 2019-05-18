@@ -2,7 +2,7 @@
   <div id="sign_wrap">
     <div v-if="status==1" class="main signIn">
       <input v-model="name" placeholder="请输入登录账号">
-      <input v-model="password" placeholder="请输入密码" type="password">
+      <input @keyup.enter="onSubmit" v-model="password" placeholder="请输入密码" type="password">
       <el-button @click="signIn" class="sign">Sign In</el-button>
       <p class="toSignUp">
         New to Taoland ?
@@ -145,6 +145,15 @@ export default {
         .catch(reject => {
           console.log(reject);
         });
+    },
+    // 键盘回车事件
+    onSubmit(e) {
+      var keyCode = window.event ? e.keyCode : e.which;
+      //  console.log('回车搜索',keyCode,e);
+      if (keyCode == 13 && this.signIn) {
+        // 这里是上一篇里面的搜索事件
+        this.signIn();
+      }
     }
   },
   beforeCreate: function() {

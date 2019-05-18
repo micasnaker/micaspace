@@ -267,9 +267,11 @@ export default {
       //查看
       let id = row._id;
       window.open("#/detail/" + id);
+      // this.$router.push("/detail/" + id);
     },
     handleLook2(index, row) {
       //查看-demo
+      // this.$router.push("/demo/");
       window.open("#/demo/");
     },
     handleEdit(index, row) {

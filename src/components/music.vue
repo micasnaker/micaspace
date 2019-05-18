@@ -90,6 +90,15 @@ export default {
   bottom: 145px;
   z-index: 999999;
 }
+// 文字无法被选中
+p {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 // PC端音乐控制显示开关前
 .btn_wrap {
   position: absolute;
