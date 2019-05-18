@@ -13,6 +13,19 @@
       </el-button-group>
     </div>
     <div v-if="type=='article'">
+      <div class="changePages">
+        <el-pagination
+          v-show="articleList.length>0"
+          background
+          small
+          layout="prev, pager, next"
+          :total="articleList.length"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-size="pageSize"
+        >></el-pagination>
+      </div>
+
       <div class="changePage">
         <el-pagination
           v-show="articleList.length>0"
@@ -24,9 +37,58 @@
           :page-size="pageSize"
         >></el-pagination>
       </div>
+        <el-input style="width:70%" v-model="search" @keyup.enter.native="searchEnterFun" placeholder="请输入内容"></el-input>
+        <el-button class="btn_search" type="primary" @click="Search">搜索</el-button>
       <el-button @click="handleAdd()" class="btn-add">新增+</el-button>
+      <!-- 搜索后 -->
+      <el-table
+        :data="searchData.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize)"
+        v-if="searchData.length>0"
+        style="width: 100%"
+        header-align="right"
+        border
+        stripe
+      >
+        <el-table-column label="标题" width="250">
+          <template slot-scope="scope">
+            <span>{{ scope.row.title }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="日期" width="250">
+          <template slot-scope="scope">
+            <i class="el-icon-time"></i>
+            <span>{{ scope.row.date }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="摘要" width="250">
+          <template slot-scope="scope">
+            <span>{{ scope.row.gist.slice(0,30) }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="分类" width="250">
+          <template slot-scope="scope">
+            <span v-if="scope.row.category.length === 0">未分类</span>
+            <el-tag
+              v-else
+              class="tag_margin"
+              type="primary"
+              v-for="tag in scope.row.category"
+              :key="tag.id"
+            >{{ tag }}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button size="mini" type="primary" @click="handleLook(scope.$index, scope.row)">查看</el-button>
+            <el-button size="mini" type="success" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <!-- 搜索前 -->
       <el-table
         :data="articleList.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize)"
+        v-else
         style="width: 100%"
         header-align="right"
         border
@@ -123,7 +185,12 @@ export default {
       demoList: [],
       type: "article",
       currentPage: 1,
-      pageSize: 10
+      pageSize: 10,
+      search: "",
+      // 原本展示数据
+      list: [],
+      // 搜索后的展示数据
+      searchData: []
     };
   },
   beforeCreate: function() {},
@@ -142,6 +209,41 @@ export default {
     });
   },
   methods: {
+    // 键盘回车事件
+    searchEnterFun(e) {
+      var keyCode = window.event ? e.keyCode : e.which;
+      //  console.log('回车搜索',keyCode,e);
+      if (keyCode == 13 && this.search) {
+        this.Search();
+      } else if (this.search.length === 0) {
+        this.Search();
+      }
+    },
+    Search() {
+      // search 是 v-model="search" 的 search
+      var search = this.search;
+      if (search) {
+        this.searchData = this.articleList.filter(function(product) {
+          // 每一项数据
+          // console.log(product)
+          return Object.keys(product).some(function(key) {
+            // 每一项数据的参数名
+            // console.log(key)
+            return (
+              String(product[key])
+                // toLowerCase() 方法用于把字符串转换为小写。
+                .toLowerCase()
+                // indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+                .indexOf(search) > -1
+            );
+          });
+        });
+      } else if (search.length === 0) {
+        this.searchData = this.list;
+      } else {
+        return this.searchData;
+      }
+    },
     // 分页
     handleCurrentChange(val) {
       this.currentPage = val;
@@ -282,6 +384,13 @@ export default {
       // display: inline;
     }
   }
+  .changePages {
+    // padding-right: 15%;
+    .el-pagination {
+      text-align: center;
+      // display: inline;
+    }
+  }
   > .title {
     margin: 30px 0;
     text-align: center;
@@ -289,6 +398,10 @@ export default {
   .tab-box {
     text-align: center;
     margin-bottom: 20px;
+  }
+  .search {
+    width: 30%;
+    display: flex;
   }
   .btn-add {
     float: right;
@@ -304,11 +417,26 @@ export default {
     .el-button + .el-button {
       margin-left: 0;
     }
+    .btn_search {
+      display: none;
+    }
     .toHome {
       display: block;
       margin-top: 5px;
       width: 60px;
     }
+    .changePage {
+      display: none;
+    }
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+@media (min-width: 768px) {
+  //pc
+  .changePages {
+    display: none;
   }
 }
 </style>
@@ -320,6 +448,9 @@ export default {
     .el-button + .el-button {
       margin-left: 0;
     }
+    .changePages {
+      display: none;
+    }
   }
 }
 </style>
@@ -330,6 +461,10 @@ export default {
   #content {
     .el-button + .el-button {
       margin-left: 0;
+    }
+
+    .changePages {
+      display: none;
     }
   }
 }

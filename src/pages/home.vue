@@ -1,10 +1,11 @@
 <template>
   <div class="page">
+    <!-- <canvas id="live2d" width="280" height="250"></canvas> -->
     <loading v-if="isTop"></loading>
     <div class="aside_wrap">
       <div class="card">
         <p class="title">ABOUT ME</p>
-        <img @click="play_none" class="pic" src="../../static/img/dage_mica.jpg" alt>
+        <img @click="about_wrap" class="pic" src="../../static/img/dage_mica.jpg" alt>
         <div class="row">
           <p>A Web developer</p>
           <div class="icons">
@@ -26,11 +27,11 @@
       <div class="card">
         <p class="title">FRIENDS</p>
         <div class="row">
-          <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-          <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-          <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-          <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-          <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+          <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
+          <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
+          <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
+          <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
+          <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
         </div>
       </div>
     </div>
@@ -45,7 +46,7 @@
         :page-size="pageSize"
       >></el-pagination>
     </div>
-    <div class="plays">
+    <!-- <div class="plays">
       <transition name="draw">
         <iframe
           v-show="isPlayShow"
@@ -53,12 +54,22 @@
           border="0"
           marginwidth="0"
           marginheight="0"
-          width="300"
-          height="86"
+          width="235"
+          height="80"
           src="//music.163.com/outchain/player?type=2&id=37653063&auto=0&height=66"
         ></iframe>
       </transition>
-    </div>
+      <transition name="draws">
+        <div v-show="isPlayShow" @click="play_none" class="btn_wrap_m">
+          <p>Off ON</p>
+        </div>
+      </transition>
+      <transition name="drawed">
+        <div v-show="lateShow" @click="play_none" class="btn_wraps_m">
+          <p>Off ON</p>
+        </div>
+      </transition>
+    </div>-->
 
     <div class="wrapper">
       <el-row>
@@ -71,7 +82,7 @@
           <div class="aside">
             <div class="card">
               <p class="title">ABOUT ME</p>
-              <img @click="play_none" class="pic" src="../../static/img/dage_mica.jpg" alt>
+              <img @click="about_wrap" class="pic" src="../../static/img/dage_mica.jpg" alt>
               <div class="row">
                 <p>A Web developer</p>
                 <div class="icons">
@@ -99,15 +110,15 @@
             <div class="card" @click="sss">
               <p class="title">FRIENDS</p>
               <div class="row">
-                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
-                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+                <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
+                <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
+                <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
+                <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
+                <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
               </div>
             </div>
           </div>
-          <div class="play">
+          <!-- <div class="play">
             <transition name="draw">
               <iframe
                 ref="player"
@@ -121,7 +132,17 @@
                 src="//music.163.com/outchain/player?type=2&id=37653063&auto=0&height=66"
               ></iframe>
             </transition>
-          </div>
+            <transition name="draws">
+              <div v-show="isPlayShow" @click="play_none" class="btn_wrap">
+                <p>Off ON</p>
+              </div>
+            </transition>
+            <transition name="drawed">
+              <div v-show="lateShow" @click="play_none" class="btn_wraps">
+                <p>Off ON</p>
+              </div>
+            </transition>
+          </div>-->
         </el-col>
       </el-row>
     </div>
@@ -144,6 +165,7 @@ import List_home from "../components/list_home";
 import { webUrl } from "../../static/js/public.js";
 import loading from "../components/loading";
 import { setTimeout } from "timers";
+// import "../../static/live2d/js/live2d.js";
 export default {
   data() {
     return {
@@ -152,7 +174,8 @@ export default {
       pageSize: 10,
       // total:10
       isTop: true,
-      isPlayShow: true
+      isPlayShow: true,
+      lateShow: false
     };
   },
   components: {
@@ -160,11 +183,10 @@ export default {
     loading
   },
   created() {
+    window.addEventListener("scroll", this.scroll);
     this.$axios.post(webUrl + "articleList").then(res => {
       this.items = res.data.reverse();
     });
-
-    window.addEventListener("scroll", this.scroll);
   },
 
   methods: {
@@ -172,8 +194,19 @@ export default {
       this.currentPage = val;
     },
 
-    play_none() {
-      this.isPlayShow = !this.isPlayShow;
+    // play_none() {
+    //   this.isPlayShow = !this.isPlayShow;
+    //   if (!this.isPlayShow) {
+    //     setTimeout(() => {
+    //       this.lateShow = true;
+    //     }, 1000);
+    //   } else {
+    //     this.lateShow = false;
+    //   }
+    // },
+
+    about_wrap() {
+      this.$router.push({ path: "/about" });
     },
 
     sss() {
@@ -221,34 +254,138 @@ export default {
   padding: 10px;
 }
 
-.play {
-  position: fixed;
-  left: 0;
-  opacity: 0.6;
-  border: none;
-  box-shadow: 0 0 10px #ccc;
-  border-radius: 2px;
-  bottom: 145px;
-  z-index: 999999;
-}
+// .play {
+//   position: fixed;
+//   left: 0;
+//   opacity: 0.6;
+//   border: none;
+//   box-shadow: 0 0 10px #ccc;
+//   border-radius: 2px;
+//   bottom: 145px;
+//   z-index: 999999;
+//   // padding-right: 35px;
+// }
+// PC端音乐控制显示开关前
+// .btn_wrap {
+//   position: absolute;
+//   width: 30px;
+//   height: 92px;
+//   background-color: #0085a1;
+//   left: 301px;
+//   bottom: 0.01px;
+//   opacity: 0.6;
+//   border: none;
+//   box-shadow: 0 0 10px #ccc;
+//   border-radius: 2px;
+//   p {
+//     color: #3ce9ff;
+//     line-height: 40px;
+//     margin-top: 5px;
+//     opacity: 1;
+//     margin-left: 3px;
+//     font-family: Comic Sans MS;
+//   }
+// }
 
-.plays {
-  position: fixed;
-  left: 0;
-  opacity: 0.6;
-  border: none;
-  box-shadow: 0 0 10px #ccc;
-  border-radius: 2px;
-  bottom: 145px;
-  z-index: 999999;
-}
-.draw-enter-active,
-.draw-leave-active {
-  transition: all 1s ease;
-}
-.draw-enter, .draw-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  width: 0;
-}
+// PC端音乐控制显示开关后
+// .btn_wraps {
+//   position: absolute;
+//   width: 30px;
+//   height: 92px;
+//   background-color: #0085a1;
+//   left: 0;
+//   bottom: 0.01px;
+//   opacity: 0.6;
+//   border: none;
+//   box-shadow: 0 0 10px #ccc;
+//   border-radius: 2px;
+//   p {
+//     color: #3ce9ff;
+//     line-height: 40px;
+//     margin-top: 5px;
+//     opacity: 1;
+//     margin-left: 3px;
+//     font-family: Comic Sans MS;
+//   }
+// }
+
+// 移动端音乐控制显示开关前
+// .btn_wrap_m {
+//   position: absolute;
+//   width: 30px;
+//   height: 82px;
+//   background-color: #0085a1;
+//   left: 235px;
+//   bottom: 0.01px;
+//   opacity: 0.6;
+//   border: none;
+//   box-shadow: 0 0 10px #ccc;
+//   border-radius: 2px;
+//   p {
+//     color: #3ce9ff;
+//     line-height: 40px;
+//     margin-top: 5px;
+//     opacity: 1;
+//     margin-left: 3px;
+//     font-family: Comic Sans MS;
+//   }
+// }
+
+// 移动端音乐控制显示开关后
+// .btn_wraps_m {
+//   position: absolute;
+//   width: 30px;
+//   height: 82px;
+//   background-color: #0085a1;
+//   left: 0;
+//   bottom: 0.01px;
+//   opacity: 0.6;
+//   border: none;
+//   box-shadow: 0 0 10px #ccc;
+//   border-radius: 2px;
+//   p {
+//     color: #3ce9ff;
+//     line-height: 40px;
+//     margin-top: 5px;
+//     opacity: 1;
+//     margin-left: 3px;
+//     font-family: Comic Sans MS;
+//   }
+// }
+
+// .draws-enter-active,
+// .draws-leave-active {
+//   transition: all 1s ease;
+// }
+// .draws-enter, .draws-leave-to /* .fade-leave-active below version 2.1.8 */ {
+//   left: 0;
+// }
+
+// .drawed-enter-active,
+// .drawed-leave-active {
+//   transition: all 0.00001s ease;
+// }
+// .drawed-enter, .drawed-leave-to /* .fade-leave-active below version 2.1.8 */ {
+//   left: 0;
+// }
+
+// .plays {
+//   position: fixed;
+//   left: 0;
+//   opacity: 0.6;
+//   border: none;
+//   box-shadow: 0 0 10px #ccc;
+//   border-radius: 2px;
+//   bottom: 145px;
+//   z-index: 999999;
+// }
+// .draw-enter-active,
+// .draw-leave-active {
+//   transition: all 1s ease;
+// }
+// .draw-enter, .draw-leave-to /* .fade-leave-active below version 2.1.8 */ {
+//   width: 0;
+// }
 .aside {
   background: #f8f8fd;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 30px rgba(10, 10, 0, 0.1) inset;
@@ -309,9 +446,9 @@ export default {
     }
   }
 
-  .plays {
-    display: none;
-  }
+  // .plays {
+  //   display: none;
+  // }
   .aside_wrap {
     display: none;
   }
@@ -331,6 +468,18 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+@media only screen and(min-width:430px) and (max-width: 991px) {
+  .aside_wrap {
+    display: none;
+  }
+  .el-col-sm-4 {
+    width: 100%;
+  }
+}
+</style>
+
+
+<style lang="scss" scoped>
 @media (max-width: 420px) {
   //mobile
   .wrapper {
@@ -343,16 +492,16 @@ export default {
       margin-bottom: 4.5%;
     }
   }
-  .plays {
-    position: fixed;
-    left: 0;
-    opacity: 0.6;
-    border: none;
-    box-shadow: 0 0 10px #ccc;
-    border-radius: 2px;
-    bottom: 145px;
-    z-index: 99999999;
-  }
+  // .plays {
+  //   position: fixed;
+  //   left: 0;
+  //   opacity: 0.6;
+  //   border: none;
+  //   box-shadow: 0 0 10px #ccc;
+  //   border-radius: 2px;
+  //   bottom: 145px;
+  //   z-index: 99999999;
+  // }
   .aside_wrap {
     background: #f8f8fd;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4),

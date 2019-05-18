@@ -38,81 +38,123 @@ const routes = [
     path: '/',
     component: CommonLayout,
     // name:'layout',
-    children:[
+    children: [
       {
         path: '',
         component: Home,
-        name:'home'
+        name: 'home',
+        meta: {
+          isShowMusic: true
+        }
       },
       {
         path: '/archives',
         component: Archives,
-        name:'archives',
+        name: 'archives',
+        meta: {
+          isShowMusic: true
+        }
       },
       {
         path: '/detail/:id',
         component: Detail,
+        meta: {
+          isShowMusic: true
+        }
       },
       {
         path: '/categories',
         component: Categories,
-        name:'categories'
+        name: 'categories',
+        meta: {
+          isShowMusic: true
+        }
       },
       {
         path: '/collections',
         component: Collections,
-        name:'collections'
+        name: 'collections',
+        meta: {
+          isShowMusic: true
+        }
       },
       {
         path: '/demo',
         component: Demo,
-        name:'demo'
+        name: 'demo',
+        meta: {
+          isShowMusic: true
+        }
       },
       {
         path: '/about',
         component: About,
-        name:'about'
+        name: 'about',
+        meta: {
+          isShowMusic: true
+        }
       },
       {
         path: '/visiter',
         component: VisiterIndex,
-        name:'visiter'
+        name: 'visiter',
+        meta: {
+          isShowMusic: true
+        }
       },
     ]
   },
   {
     path: '/sign',
     component: Signin,
-    name:'Signin',
+    name: 'Signin',
     alias: '/admin',
+    meta: {
+      isShowMusic: false
+    }
   },
   {
     path: '/admin/list',
     name: 'ArticleList',
-    component: ArticleList
+    component: ArticleList,
+    meta: {
+      isShowMusic: true
+    }
   },
   {
     path: '/admin/edit',
     name: 'ArticleEdit',
-    component: ArticleEdit
+    component: ArticleEdit,
+    meta: {
+      isShowMusic: true
+    }
   },
   {
     path: '/admin/edit/:id',
     name: 'ArticleUpdate',
-    component: ArticleEdit
+    component: ArticleEdit,
+    meta: {
+      isShowMusic: true
+    }
   },
   {
     path: '/admin/editt',
     name: 'DemoEdit',
-    component: DemoEdit
+    component: DemoEdit,
+    meta: {
+      isShowMusic: true
+    }
   },
   {
-    path: '/admin/editt/:id', 
+    path: '/admin/editt/:id',
     name: 'DemoUpdate',
-    component: DemoEdit
+    component: DemoEdit,
+    meta: {
+      isShowMusic: true
+    }
   }
 ]
 export default new VueRouter({
-  // mode: 'history',
+  mode: 'history',
   routes
 })

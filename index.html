@@ -238,6 +238,17 @@
     }
   }
 </style>
+
+<!-- javascript单独页面通用代码段：以下方法较适合做seo搜索或指定某一个子页单独https
+在需要强制为https的页面上加入以下代码进行处理 -->
+<!-- <script type="text/javascript">
+  var url = window.location.href;
+  if (url.indexOf("https") < 0) {
+    url = url.replace("http:", "https:");
+    window.location.replace(url);
+  }
+</script> -->
+
 <script>
   window.onload = function () {
     // 阻止双击放大

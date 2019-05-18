@@ -3,20 +3,25 @@
     <div v-if="status==1" class="main signIn">
       <input v-model="name" placeholder="请输入登录账号">
       <input v-model="password" placeholder="请输入密码" type="password">
-      <el-button @click="signIn" class="sign" >Sign In</el-button>
-      <p class="toSignUp">New to Taoland ? <span @click="toSignUp" > Sign Up !</span></p>
+      <el-button @click="signIn" class="sign">Sign In</el-button>
+      <p class="toSignUp">
+        New to Taoland ?
+        <span @click="toSignUp">Sign Up !</span>
+      </p>
     </div>
     <div v-else-if="status==2" class="main signUp">
       <input v-model="name" placeholder="请输入登录账号">
       <input v-model="nickName" placeholder="请输入昵称">
       <input v-model="password" placeholder="请输入密码" type="password">
-      <el-button @click="signUp" class="sign" >Sign Up</el-button>
-      <p class="toSignUp"><span @click="back" > Back to Sign In !</span></p>
+      <el-button @click="signUp" class="sign">Sign Up</el-button>
+      <p class="toSignUp">
+        <span @click="back">Back to Sign In !</span>
+      </p>
     </div>
     <div v-else-if="status==3" class="loading_signin">
       <div v-if="!txtSignIn" class="outside"></div>
       <p v-else class="txt">Sign In</p>
-		</div>
+    </div>
   </div>
 </template>
 

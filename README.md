@@ -8,7 +8,7 @@
 + 数据库采用mongodb
 + 响应式，移动端勉强能看...
 ## 线上预览
-[http://111.231.112.75/micaspace/](http://111.231.112.75/)
+[https://www.mica.wang](https://www.mica.wang/)
 
 ## 食用
 + 下载到本地

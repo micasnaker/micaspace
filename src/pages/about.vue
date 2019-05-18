@@ -11,7 +11,7 @@
               <!-- <p class="txt">
                 做前端有一年了，目前就职于
                 <a href="http://111.231.112.75/resume/" target="_blank">Civil Jinhua</a>
-              </p> -->
+              </p>-->
               <!-- <p class="txt">并不是科班出身，学的是电子，不想从事不喜欢的工作，直到遇到前端</p> -->
               <p class="txt">`喜欢一切数码&&科技产品并且偶尔拍摄Vlog的一名Web developer`</p>
               <p class="txt">非常喜欢现在的工作和职业,从大学期间开始自学,遇到过很多坑,但是一直坚持,坚信终有一天自己也会变强!</p>
@@ -21,7 +21,7 @@
               <ul>
                 <li>
                   个人主页：
-                  <a href="http://111.231.112.75" target="_blank">Mica</a>
+                  <a href="https://www.mica.wang" target="_blank">Mica</a>
                 </li>
                 <li>
                   Github：
@@ -34,7 +34,10 @@
                   >知乎</a>
                 </li>
                 <li>
-                  <a href="https://music.163.com/#/my/m/music/playlist?id=409256318" target="_blank">网易云</a>
+                  <a
+                    href="https://music.163.com/#/my/m/music/playlist?id=409256318"
+                    target="_blank"
+                  >网易云</a>
                 </li>
                 <li>
                   Email：
@@ -50,7 +53,7 @@
               <!-- <p class="txt">
                 欢迎大家提一些对本站的建议，可以直接在下面留言或者新建一个
                 <a href="https://github.com/bestRenekton/taoLand/issues" target="_blank">Issue.</a>
-              </p> -->
+              </p>-->
               <ul>
                 <li>实现了用户注册、登录、检测登录、博客管理（文章的修改和删除）、文章编辑（Markdown）、标签分类等功能。</li>
                 <li>前端使用vue全家桶（cli,router,vuex,axios），框架用的elmentUI</li>
@@ -119,23 +122,57 @@
                     <code class="highlighter-rouge">[+]</code>上一篇下一篇
                   </li>
                 </ul>
-                <p><em>2019.5.13 v1.3.1</em></p>
-                    <ul>
-                      <!-- <li><code class="highlighter-rouge">[+]</code>music</li>
-                      <li><code class="highlighter-rouge">[+]</code>文章配图</li> -->
-                      <li><code class="highlighter-rouge">[+]</code>分页功能</li>
-                      <!-- <li><code class="highlighter-rouge">[+]</code>后台消息功能</li>
-                      <li><code class="highlighter-rouge">[+]</code>redis</li> -->
+                <p>
+                  <em>2019.5.13 v1.4.1</em>
+                </p>
+                <ul>
+                  <!-- <li><code class="highlighter-rouge">[+]</code>music</li>
+                  <li><code class="highlighter-rouge">[+]</code>文章配图</li>-->
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>文章配图
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>分页功能
+                  </li>
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>搜索功能
+                  </li>
+                  <!-- <li><code class="highlighter-rouge">[+]</code>后台消息功能</li>
+                  <li><code class="highlighter-rouge">[+]</code>redis</li>-->
+                </ul>
+                <p>
+                  <em>2019.5.15 v1.5.1</em>
+                </p>
+                <ul>
+                  <!-- <li><code class="highlighter-rouge">[+]</code>Netease Cloud Music</li> -->
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>网易云音乐
+                  </li>
+                  <!--  <li><code class="highlighter-rouge">[+]</code>文章配图</li> -->
+                  <!-- <li><code class="highlighter-rouge">[+]</code>后台消息功能</li>
+                  <li><code class="highlighter-rouge">[+]</code>redis</li>-->
+                </ul>
+                <p>
+                  <em>2019.5.17 v1.6.1</em>
+                </p>
+                <ul>
+                  <!-- <li><code class="highlighter-rouge">[+]</code>Netease Cloud Music</li> -->
+                  <li>
+                    <code class="highlighter-rouge">[+]</code>音乐开关
+                  </li>
+                  <!--  <li><code class="highlighter-rouge">[+]</code>文章配图</li> -->
+                  <!-- <li><code class="highlighter-rouge">[+]</code>后台消息功能</li>
+                  <li><code class="highlighter-rouge">[+]</code>redis</li>-->
                 </ul>
               </div>
             </div>
             <div class="card">
               <p class="card-title" id="anchor-friend">友情链接</p>
               <div class="row-link">
-                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>|
-                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>|
-                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>|
-                <a class="link" href="http://111.231.112.75/resume/" target="_blank">Mica`s Resume</a>
+                <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>|
+                <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>|
+                <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>|
+                <a class="link" href="https://www.mica.wang/resume/" target="_blank">Mica`s Resume</a>
               </div>
             </div>
           </div>

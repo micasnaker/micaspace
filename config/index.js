@@ -49,7 +49,10 @@ module.exports = {
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
-
+    // historyApiFallback: true,//不跳转
+    // historyApiFallback:{
+    //   index:'/index.html'
+    // },
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.

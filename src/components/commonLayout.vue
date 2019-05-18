@@ -3,9 +3,9 @@
     <common-header></common-header>
     <!-- 子路由 -->
     <transition name="slide-fade">
-      <!-- <keep-alive> -->
+      <keep-alive>
       <router-view></router-view>
-      <!-- </keep-alive> -->
+      </keep-alive>
     </transition>
     <common-footer></common-footer>
   </div>

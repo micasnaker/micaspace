@@ -1,13 +1,13 @@
 <template>
   <header>
-    <div class="wrapper">
+    <div ref="wrap" class="wrapper">
       <el-row>
         <el-col :xs="20" :sm="4" :md="4" :lg="4" :xl="4">
           <div class="logo">MICA SPACE</div>
         </el-col>
         <el-col :xs="0" :sm="20" :md="20" :lg="20" :xl="20">
           <el-menu
-            :default-active="activeIndex"
+            :default-active="$route.path"
             class="el-menu-demo hidden-xs-only nav-pc"
             mode="horizontal"
             @select="handleSelect"
@@ -15,46 +15,46 @@
             text-color="#9d9d9d"
             active-text-color="#fff"
           >
-            <el-menu-item index="1">
+            <el-menu-item index="/">
               <router-link to="/">
                 <i class="iconfont icon-home"></i>Home
               </router-link>
             </el-menu-item>
-            <el-menu-item index="2">
+            <el-menu-item index="/archives">
               <router-link to="/archives">
                 <i class="iconfont icon-archives"></i>Archives
               </router-link>
             </el-menu-item>
-            <el-menu-item index="3">
+            <el-menu-item index="/categories">
               <router-link to="/categories">
                 <i class="iconfont icon-tubiao13"></i>Categories
               </router-link>
             </el-menu-item>
-            <el-menu-item index="4">
+            <el-menu-item index="/collections">
               <router-link to="/collections">
                 <i class="iconfont icon-shoucang"></i>Collections
               </router-link>
             </el-menu-item>
-            <el-menu-item index="5">
+            <el-menu-item index="/demo">
               <router-link to="/demo">
                 <i class="iconfont icon-play"></i>Demo
               </router-link>
             </el-menu-item>
-            <el-menu-item index="6">
+            <el-menu-item index="/about">
               <router-link to="/about">
                 <i class="iconfont icon-meho"></i>About
               </router-link>
             </el-menu-item>
-            <el-menu-item index="7" v-if="isSignIn===0">
+            <el-menu-item index="/sign" v-if="isSignIn===0">
               <router-link :class="[activeIndex==7?'meBtnOn':'meBtnOff']" to="/sign">Sign In</router-link>
             </el-menu-item>
-            <el-menu-item index="7" v-else-if="isSignIn===1">
+            <el-menu-item index="/sign" v-else-if="isSignIn===1">
               <router-link
-                :class="[activeIndex==7?'meBtnOn':'meBtnOff']"
+                :class="[activeIndex=='/sign'?'meBtnOn':'meBtnOff']"
                 to="/admin/list"
               >{{nickName}}</router-link>
             </el-menu-item>
-            <el-menu-item index="7" v-else-if="isSignIn===2">
+            <el-menu-item index="/sign" v-else-if="isSignIn===2">
               <router-link :class="[activeIndex==7?'meBtnOn':'meBtnOff']" to="/visiter">{{nickName}}</router-link>
             </el-menu-item>
           </el-menu>
@@ -112,9 +112,12 @@ export default {
       navMobile: false
     };
   },
+
   methods: {
     handleSelect(key, keyPath) {
       this.$store.commit("changeIndex", key);
+      this.ACTIVE_INDEX = key;
+      // console.log(this.$route.path)
     },
     navToggle() {
       this.navMobile = this.navMobile ? false : true;
@@ -129,6 +132,7 @@ export default {
   computed: {
     activeIndex() {
       return this.$store.state.activeIndex;
+      // return this.ACTIVE_INDEX;
     },
     isSignIn() {
       return this.$store.state.isSignIn;
@@ -149,6 +153,7 @@ header {
   color: #9d9d9d;
   box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.5);
   margin-bottom: 10px;
+  font-family: Comic Sans MS;
   .logo {
     line-height: 40px;
     font-size: 16px;
