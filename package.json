@@ -25,7 +25,7 @@
     "jsonwebtoken": "^8.2.0",
     "live2d-vue": "^0.2.2",
     "live2d4vue": "^0.1.0",
-    "mavon-editor": "^2.4.16",
+    "mavon-editor": "^2.8.2",
     "mongoose": "^5.0.6",
     "vue": "^2.5.2",
     "vue-hot-reload-api": "^2.2.4",
